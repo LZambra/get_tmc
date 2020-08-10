@@ -1,0 +1,62 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<div class="page-wrapper bg-gra-04 p-t-45 p-b-50">    
+    <div class="wrapper wrapper--w790">        
+        <div class="card card-5">
+            <div class="card-heading">
+                <h2 class="title">Tasa Máxima Convencional</h2>
+            </div>
+            {% ifequal status_code 404 %}
+            <span id="mensaje">TMC no encontrado</span>     
+            {% endifequal  %}                 
+            {% ifequal status_code 599 %}
+            <span id="mensaje">Problemas de Conexión</span>     
+            {% endifequal  %}            
+            <div class="card-body">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {% load l10n %}
+                    <div class="form-row">
+                        <div class="name">Monto del Crédito</div>
+                        <div class="value">
+                            <div class="input-group">
+                                {% localize on %}
+                                {{form.montoUF}}
+                                {% endlocalize %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="name">Plazo del Crédito</div>
+                        <div class="value">
+                            <div class="input-group">
+                                {{form.plazo}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="name">Fecha de Consulta</div>
+                        <div class="value">
+                            <div class="input-group">
+                                {{form.fechaSolicitud}}
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="name">Tasa Máxima Convencional</div>
+                        <div class="value">
+                            <div class="input-group">
+                                <input class="input--style-5" type="text" value="{{tmc}}" disabled />
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="btn btn--radius-2 btn--green" type="submit">Consultar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

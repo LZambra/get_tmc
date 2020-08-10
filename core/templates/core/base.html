@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cumplo</title>
+    {% load static %}
+    <link href="{% static 'core/css/main.css' %}" rel="stylesheet" media="all" />
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#mensaje").slideUp( 3000 )
+         });
+    </script>
+</head>
+<body>
+    {% block content %}{% endblock %}
+</body>
+</html>
